@@ -143,6 +143,7 @@ export default class UserRegistration extends Vue {
       position_id: this.selectedPosition,
       photo: this.fileObj,
     }
+    this.fileObj = {}
     const { data } = await registerUser(payload)
   }
   async rewritePositions(): Promise<void> {

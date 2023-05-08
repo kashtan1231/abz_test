@@ -32,6 +32,7 @@ export default class BaseRadioButton extends Vue {
 .base-radio-button {
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   &__point {
     margin-right: 12px;
