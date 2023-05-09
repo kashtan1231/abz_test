@@ -3,8 +3,14 @@
     <TheHeader @scrollPush="scrollTo" />
     <div class="page">
       <Hero @scrollPush="scrollTo" />
-      <Users ref="users" />
-      <UserRegistration ref="signUp" />
+      <Users
+        ref="users"
+        @scrollPush="scrollTo"
+      />
+      <UserRegistration
+        ref="signUp"
+        @scrollPush="scrollTo"
+      />
     </div>
   </div>
 </template>

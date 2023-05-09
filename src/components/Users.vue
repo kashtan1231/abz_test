@@ -56,6 +56,7 @@ export default class Users extends Vue {
   showNextUserPage(): void {
     this.currentUsersPage += 1
     this.rewriteUsersArray()
+    this.$emit('scrollPush', 'users')
   }
   userPhoneFormatted(userPhone: string): string {
     const phoneRegEx = /^(\+38)(\d{3})(\d{3})(\d{2})(\d{2})$/
@@ -70,7 +71,7 @@ export default class Users extends Vue {
       this.isNextPageExist = Boolean(data.links.next_url)
       this.isShowPreloader = false
     } catch (error: any) {
-      console.log(error.massage)
+      alert(error.response.data.message)
     }
   }
 
@@ -132,6 +133,22 @@ export default class Users extends Vue {
       text-overflow: ellipsis;
       overflow: hidden;
     }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .users {
+    padding: 0 32px;
+
+    &__list {
+      gap: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .users {
+    padding: 0 16px;
   }
 }
 </style>

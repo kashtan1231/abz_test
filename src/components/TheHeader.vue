@@ -40,7 +40,6 @@ export default class TheHeader extends Vue {
   position: fixed;
   display: flex;
   justify-content: center;
-  padding: 36px 46px 16px;
   width: 100vw;
   padding: 13px 60px;
   background-color: $white;
@@ -63,6 +62,18 @@ export default class TheHeader extends Vue {
     :not(:last-child) {
       margin-right: 10px;
     }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .the-header {
+    padding: 13px 32px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .the-header {
+    padding: 13px 16px;
   }
 }
 </style>

@@ -24,6 +24,6 @@ export const registerUser = async (payload: any): Promise<void> => {
   await instanceApi.post('users', payload, {
     headers: { 'Content-Type': 'multipart/form-data' },
   })
-  const newUsers = getUsers(1)
-  store.commit('userList/setUsers', data.users)
+  const newUsers = await getUsers(1)
+  store.commit('userList/setUsers', newUsers.data.users)
 }

@@ -81,7 +81,6 @@ export default class UserRegistration extends Vue {
   email = ''
   phone = ''
   errorUploadText = ''
-  nameUploadText = 'Upload your photo'
   selectedPosition: number | null = null
   positions: Array<Record<string, any>> = []
   fileObj: Record<string, any> = {}
@@ -109,6 +108,9 @@ export default class UserRegistration extends Vue {
       this.errorUpload
     )
   }
+  get nameUploadText(): string {
+    return this.fileObj.name || 'Upload your photo'
+  }
 
   isButtonSelected(id: number): boolean {
     return id === this.selectedPosition
@@ -119,36 +121,40 @@ export default class UserRegistration extends Vue {
   changeUploadedName(event: any): void {
     const value = event.target.value
 
-    this.fileObj = event.target.files[0]
-    const fileSize = this.fileObj?.size / (1024 * 1024)
+    this.fileObj = event.target.files[0] || {}
+    const fileSize = this.fileObj.size / (1024 * 1024)
 
-    if (this.fileObj?.type !== 'image/jpeg') {
+    if (this.fileObj.type !== 'image/jpeg') {
       this.errorUploadText = 'Photo must be jpeg/jpg type'
-      this.nameUploadText = 'Upload your photo'
     } else if (fileSize > 5) {
       this.errorUploadText = 'Photo size must not be greater than 5 Mb'
-      this.nameUploadText = 'Upload your photo'
     } else {
-      this.nameUploadText = value
-        ? event.target.files[0].name
-        : 'Upload your photo'
       this.errorUploadText = ''
     }
   }
-  signUp(): void {
-    const payload = {
-      name: this.name,
-      email: this.email,
-      phone: this.phone.replace(/[()\s]/g, ''),
-      position_id: this.selectedPosition,
-      photo: this.fileObj,
+  async signUp(): Promise<void> {
+    try {
+      const payload = {
+        name: this.name,
+        email: this.email,
+        phone: this.phone.replace(/[()\s]/g, ''),
+        position_id: this.selectedPosition,
+        photo: this.fileObj,
+      }
+      await registerUser(payload)
+      this.fileObj = {}
+      this.$emit('scrollPush', 'users')
+    } catch (error: any) {
+      alert(error.response.data.message)
     }
-    registerUser(payload)
-    this.fileObj = {}
   }
   async rewritePositions(): Promise<void> {
-    const { data } = await getPositions()
-    this.positions = data.positions
+    try {
+      const { data } = await getPositions()
+      this.positions = data.positions
+    } catch (error: any) {
+      alert(error.response.data.message)
+    }
   }
 
   mounted(): void {
@@ -162,6 +168,11 @@ export default class UserRegistration extends Vue {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 16px;
+
+  &__title {
+    text-align: center;
+  }
 
   &__form-container {
     width: 100%;

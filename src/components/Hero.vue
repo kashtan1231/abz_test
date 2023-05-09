@@ -52,4 +52,16 @@ export default class Hero extends Vue {
     margin-bottom: 32px;
   }
 }
+
+@media screen and (max-width: 1023px) {
+  .hero {
+    padding: 88px 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hero {
+    padding: 40px 16px 71px;
+  }
+}
 </style>

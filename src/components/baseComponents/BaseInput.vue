@@ -5,6 +5,7 @@
         'base-input__label',
         { 'move-label': isInputFocused || value, 'error-label': isShowError },
       ]"
+      for="field-input"
       >{{ label }}</label
     >
     <input
@@ -14,6 +15,7 @@
       @blur="unfocusInput"
       :value="value"
       :type="type"
+      id="field-input"
     />
     <p
       v-if="helper && !isShowError"
