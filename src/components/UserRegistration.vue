@@ -123,8 +123,6 @@ export default class UserRegistration extends Vue {
     this.selectedPosition = id
   }
   changeUploadedName(event: any): void {
-    const value = event.target.value
-
     this.fileObj = event.target.files[0] || {}
     const fileSize = this.fileObj.size / (1024 * 1024)
 

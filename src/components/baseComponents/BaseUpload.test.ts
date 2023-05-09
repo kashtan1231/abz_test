@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { shallowMount } from '@vue/test-utils'
-import BaseUpload from '@/components/baseComponents/BaseUpload.vue'
+import BaseUpload from './BaseUpload.vue'
 
 describe('BaseUpload.vue', () => {
   it('renders name when passed', () => {
