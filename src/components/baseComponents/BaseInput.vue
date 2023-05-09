@@ -8,15 +8,17 @@
       for="field-input"
       >{{ label }}</label
     >
-    <input
-      :class="['base-input__field-input', { 'error-input': isShowError }]"
-      @input="onInput"
-      @focus="focusInput"
-      @blur="unfocusInput"
-      :value="value"
-      :type="type"
-      id="field-input"
-    />
+    <div :class="['base-input__wrapper', { 'error-input': isShowError }]">
+      <input
+        class="base-input__field-input"
+        @input="onInput"
+        @focus="focusInput"
+        @blur="unfocusInput"
+        :value="value"
+        :type="type"
+        id="field-input"
+      />
+    </div>
     <p
       v-if="helper && !isShowError"
       class="base-input__helper"
@@ -121,11 +123,15 @@ export default class BaseInput extends Vue {
     pointer-events: none;
   }
 
+  &__wrapper {
+    box-shadow: inset 0 0 0 1px $gray-dark;
+    border-radius: 4px;
+  }
+
   &__field-input {
     @extend p;
     padding: 14px 16px;
-    border-radius: 4px;
-    box-shadow: inset 0 0 0 1px $gray-dark;
+    width: 100%;
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
