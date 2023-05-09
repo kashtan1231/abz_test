@@ -16,7 +16,7 @@
         @blur="unfocusInput"
         :value="value"
         :type="type"
-        id="field-input"
+        :id="`field-input-${id}`"
       />
     </div>
     <p
@@ -44,6 +44,7 @@ export default class BaseInput extends Vue {
   @Prop({ default: '' }) label!: string
   @Prop({ default: '' }) helper!: string
   @Prop({ default: '' }) error!: string
+  @Prop({ default: null }) id!: number
   @Prop({ default: null }) maxLength!: number
   @Prop({ default: false }) errorCondition!: boolean
 
