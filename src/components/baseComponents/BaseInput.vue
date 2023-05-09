@@ -5,7 +5,7 @@
         'base-input__label',
         { 'move-label': isInputFocused || value, 'error-label': isShowError },
       ]"
-      for="field-input"
+      :for="`field-input-${id}`"
       >{{ label }}</label
     >
     <div :class="['base-input__wrapper', { 'error-input': isShowError }]">

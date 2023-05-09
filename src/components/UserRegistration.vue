@@ -9,6 +9,7 @@
         label="Your name"
         maxLength="60"
         error="Name should contain 2-60 characters"
+        id="1"
         :errorCondition="errorName"
       />
 
@@ -19,6 +20,7 @@
         label="Email"
         maxLength="100"
         error="Email must be valid"
+        id="2"
         :errorCondition="errorEmail"
       />
 
@@ -29,6 +31,7 @@
         label="Phone"
         helper="+38 (XXX) XXX - XX - XX"
         error="Phone must be valid"
+        id="3"
         :errorCondition="errorPhone"
       />
       <p class="user-registration__position">Select your position</p>
