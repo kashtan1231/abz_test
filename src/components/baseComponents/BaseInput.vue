@@ -133,8 +133,9 @@ export default class BaseInput extends Vue {
   }
 
   &__helper {
-    margin-top: 4px;
-    padding-left: 16px;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 16px;
     color: $gray-dark;
     font-size: 12px;
     line-height: 14px;

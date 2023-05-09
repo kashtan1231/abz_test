@@ -40,6 +40,7 @@ export default class BaseUpload extends Vue {
 
 <style lang="scss" scoped>
 .base-upload {
+  position: relative;
   width: 100%;
   max-width: 380px;
 
@@ -65,8 +66,9 @@ export default class BaseUpload extends Vue {
   }
 
   &__error {
-    margin-top: 4px;
-    padding-left: 16px;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 16px;
     color: $red;
     font-size: 12px;
     line-height: 14px;

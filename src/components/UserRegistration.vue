@@ -185,7 +185,7 @@ export default class UserRegistration extends Vue {
   }
 
   &__position {
-    margin: 29px 0 11px;
+    margin: 43px 0 11px;
   }
 
   &__radio-button {

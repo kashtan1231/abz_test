@@ -50,7 +50,6 @@ export default class App extends Vue {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  width: 100vw;
   background-color: $gray;
   font-family: $font-family-default, Arial;
   font-style: normal;
