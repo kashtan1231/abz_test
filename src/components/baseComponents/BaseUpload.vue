@@ -15,7 +15,6 @@
       >
       <div class="base-upload__name">{{ name }}</div>
     </div>
-    <template></template>
     <p
       v-if="error"
       class="base-upload__error"
