@@ -8,7 +8,10 @@
       also be excited to learn, as the world of Front-End Development keeps
       evolving.
     </p>
-    <BaseButton text="Sign up" />
+    <BaseButton
+      @click.native="emitScroll('signUp')"
+      text="Sign up"
+    />
   </div>
 </template>
 
@@ -19,7 +22,11 @@ import BaseButton from '@/components/baseComponents/BaseButton.vue'
 @Component({
   components: { BaseButton },
 })
-export default class Hero extends Vue {}
+export default class Hero extends Vue {
+  emitScroll(element: string): void {
+    this.$emit('scrollPush', element)
+  }
+}
 </script>
 
 <style lang="scss" scoped>

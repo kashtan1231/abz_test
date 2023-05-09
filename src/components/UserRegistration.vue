@@ -135,7 +135,7 @@ export default class UserRegistration extends Vue {
       this.errorUploadText = ''
     }
   }
-  async signUp(): Promise<void> {
+  signUp(): void {
     const payload = {
       name: this.name,
       email: this.email,
@@ -143,8 +143,8 @@ export default class UserRegistration extends Vue {
       position_id: this.selectedPosition,
       photo: this.fileObj,
     }
+    registerUser(payload)
     this.fileObj = {}
-    const { data } = await registerUser(payload)
   }
   async rewritePositions(): Promise<void> {
     const { data } = await getPositions()

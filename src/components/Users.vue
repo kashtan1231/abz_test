@@ -46,9 +46,12 @@ import { getUsers } from '@/api/mainRequests'
 })
 export default class Users extends Vue {
   currentUsersPage = 1
-  users: Array<Record<string, any>> = []
   isNextPageExist = false
   isShowPreloader = true
+
+  get users(): Array<Record<string, any>> {
+    return this.$store.state.userList.users
+  }
 
   showNextUserPage(): void {
     this.currentUsersPage += 1
@@ -63,7 +66,7 @@ export default class Users extends Vue {
     try {
       this.isShowPreloader = true
       const { data } = await getUsers(this.currentUsersPage)
-      this.users = data.users
+      this.$store.commit('userList/setUsers', data.users)
       this.isNextPageExist = Boolean(data.links.next_url)
       this.isShowPreloader = false
     } catch (error: any) {

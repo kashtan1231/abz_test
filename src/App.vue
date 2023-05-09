@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <TheHeader />
+    <TheHeader @scrollPush="scrollTo" />
     <div class="page">
-      <Hero />
-      <Users />
-      <UserRegistration />
+      <Hero @scrollPush="scrollTo" />
+      <Users ref="users" />
+      <UserRegistration ref="signUp" />
     </div>
   </div>
 </template>
@@ -24,7 +24,18 @@ import UserRegistration from '@/components/UserRegistration.vue'
     UserRegistration,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  $refs!: {
+    [key: string]: Vue
+  }
+
+  scrollTo(ref: any) {
+    this.$refs[ref].$el.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  }
+}
 </script>
 
 <style lang="scss">

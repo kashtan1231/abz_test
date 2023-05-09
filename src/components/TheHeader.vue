@@ -8,8 +8,14 @@
       />
 
       <div class="the-header__buttons">
-        <BaseButton text="Users" />
-        <BaseButton text="Sign up" />
+        <BaseButton
+          @click.native="emitScroll('users')"
+          text="Users"
+        />
+        <BaseButton
+          @click.native="emitScroll('signUp')"
+          text="Sign up"
+        />
       </div>
     </div>
   </div>
@@ -22,7 +28,11 @@ import BaseButton from '@/components/baseComponents/BaseButton.vue'
 @Component({
   components: { BaseButton },
 })
-export default class TheHeader extends Vue {}
+export default class TheHeader extends Vue {
+  emitScroll(element: string): void {
+    this.$emit('scrollPush', element)
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -42,6 +52,11 @@ export default class TheHeader extends Vue {}
     align-items: center;
     width: 100%;
     max-width: 1024px;
+  }
+
+  &__logo {
+    width: 104px;
+    height: 26px;
   }
 
   &__buttons {

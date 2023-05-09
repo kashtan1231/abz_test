@@ -1,3 +1,4 @@
+import store from '@/store'
 import { instanceApi } from '@/api/instance'
 import { AxiosResponse } from 'axios'
 
@@ -17,11 +18,12 @@ export const getToken = (): Promise<AxiosResponse> => {
 }
 
 // Register new user
-export const registerUser = async (payload: any): Promise<AxiosResponse> => {
+export const registerUser = async (payload: any): Promise<void> => {
   const { data } = await getToken()
   instanceApi.defaults.headers.common.token = data.token
   await instanceApi.post('users', payload, {
     headers: { 'Content-Type': 'multipart/form-data' },
   })
-  return getUsers(1)
+  const newUsers = getUsers(1)
+  store.commit('userList/setUsers', data.users)
 }
