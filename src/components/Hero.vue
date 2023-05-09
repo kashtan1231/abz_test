@@ -35,7 +35,7 @@ export default class Hero extends Vue {
   flex-direction: column;
   align-items: center;
   padding: 164px 16px;
-  background-image: url(../assets/hero-bg.jpg);
+  background-image: url(../assets/hero-bg.webp);
 
   &__title,
   &__description {
