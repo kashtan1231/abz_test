@@ -1,5 +1,5 @@
-import store from '@/store'
-import { instanceApi } from '@/api/instance'
+import store from '../store'
+import { instanceApi } from './instance'
 import { AxiosResponse } from 'axios'
 
 // Get list of registrated users
