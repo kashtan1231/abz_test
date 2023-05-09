@@ -127,8 +127,31 @@ export default class BaseInput extends Vue {
     border-radius: 4px;
     box-shadow: inset 0 0 0 1px $gray-dark;
 
-    &::placeholder {
-      color: $gray-dark;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+      -webkit-text-fill-color: $black;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      opacity: 0;
     }
   }
 
